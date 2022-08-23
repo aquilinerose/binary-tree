@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+	int data;
+	struct node *left;
+	struct node *right;
+	};
+
+struct node* newnode(int value) {
+	struct node *new = (struct node*)malloc(sizeof(struct node));
+	new->data=value;
+	new->left=NULL;
+	new->right=NULL;
+	return(new);
+}
+
+void preorder(struct node *root)
+{
+	if(root==NULL)
+		return;
+	printf("%d ",root->data);
+	preorder(root->left);
+	preorder(root->right);
+}
+
+void inorder(struct node *root)
+{
+	if(root==NULL)
+		return;
+	inorder(root->left);
+	printf("%d ",root->data);
+	inorder(root->right);
+}
+
+void postorder(struct node *root)
+{
+	if(root==NULL)
+		return;
+	postorder(root->left);
+	postorder(root->right);
+	printf("%d ",root->data);
+}
+
+
+void main()
+{   
+    int data;
+	struct node*root;
+	printf("enter data");
+	scanf("%d",&data);
+	root=newnode(data);
+		printf("enter data");
+	scanf("%d",&data);
+	root->left = newnode(data);
+		printf("enter data");
+	scanf("%d",&data);
+	root->right = newnode(data);
+		printf("enter data");
+	scanf("%d",&data);
+	root->left->left = newnode(data);
+		printf("enter data");
+	scanf("%d",&data);
+	root->left->right = newnode(data);
+		printf("enter data");
+	scanf("%d",&data);
+	root->right->left = newnode(data);
+		printf("enter data");
+	scanf("%d",&data);
+	root->right->right = newnode(data);
+	printf("Pre order traversal: \n");
+	preorder(root);
+	printf("\n");
+	printf("\nIn order traversal: \n");
+	inorder(root);
+	printf("\n");
+	printf("\nPost order traversal: \n");
+	postorder(root);
+	printf("\n");
+}
